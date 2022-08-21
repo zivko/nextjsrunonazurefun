@@ -1,0 +1,18 @@
+{
+    "name": "basic-nextjs-azure-functions",
+    "version": "1.0.0",
+    "description": "",
+    "scripts": {
+      "build": "tsc",
+      "prestart": "npm run build",
+      "start": "func start",
+      "test": "echo \"No tests yet...\""
+    },
+    "dependencies": {
+      "@nextjsonazure/basic-nextjs-example": "*"
+    },
+    "devDependencies": {
+      "@azure/functions": "^1.2.3",
+      "typescript": "^4.0.0"
+    }
+  }

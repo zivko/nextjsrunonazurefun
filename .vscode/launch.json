@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "attach",
+            "name": "jss azure functions",
+            "address": "localhost",
+            "port": 9229, // Or 5858 
+            "sourceMaps": true,
+            "preLaunchTask": "func: host start",
+            "cwd": "${workspaceFolder}/packages/basic-nextjs-azure-functions",
+        }
+    ]
+}

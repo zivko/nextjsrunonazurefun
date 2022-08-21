@@ -1,0 +1,17 @@
+{
+    "name": "nextjsonazure",
+    "version": "1.0.0",
+    "description": "Running nextjs app on Azure function",
+    "main": "index.js",
+    "dependencies": {
+        "lerna": "^4.0.0"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build:basicnextjs": "lerna run build --scope @nextjsonazure/basic-nextjs-example"
+    },
+    "devDependencies": {
+        "@types/node": "^18.7.8",
+        "ncp": "^2.0.0"
+    }
+}
