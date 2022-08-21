@@ -1,0 +1,42 @@
+name: Deploy basic nextjs build
+
+on:
+  [workflow_dispatch]
+
+env:
+  NODE_VERSION: '14.x'
+  NEXTJSBUILD: './packages/basic-nextjs-example/dist/*'
+  NEXTJSBUILDDEST: 'https://nextjsapp951f.file.core.windows.net/nextjsonazurefun98c7/site/basic-nextjs-example'
+  AZUREFUNCDEST: 'https://nextjsapp951f.file.core.windows.net/nextjsonazurefun98c7/site/wwwroot'
+
+jobs:
+  build-and-deploy:
+    runs-on: windows-latest
+    steps:
+    - name: 'Checkout GitHub Action'
+      uses: actions/checkout@main
+
+    - name: Setup Node ${{ env.NODE_VERSION }} Environment
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+
+    - name: Install azcopy
+      uses: kheiakiyama/install-azcopy-action@v1.0.3
+
+    - name: 'Lerna bootstrap & next build & azure functions build'
+      shell: pwsh
+      run: |
+        lerna bootstrap
+        npm run build:basicnextjs
+        popd
+
+    - uses: kheiakiyama/install-azcopy-action@v1
+      with:
+        version: 'v10'
+    - run: azcopy_v10 copy '${{ env.NEXTJSBUILD }}' '${{ env.NEXTJSBUILDDEST }}?${{ secrets.SECRETSASTOKENBASICNEXTJS }}' --recursive
+    
+    - uses: kheiakiyama/install-azcopy-action@v1
+      with:
+        version: 'v10'
+    - run: azcopy_v10 copy './packages/basic-nextjs-azure-functions/*' '${{ env.AZUREFUNCDEST }}?${{ secrets.SECRETSASTOKENBASICNEXTJS }}' --recursive
