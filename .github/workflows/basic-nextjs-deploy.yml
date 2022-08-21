@@ -6,8 +6,8 @@ on:
 env:
   NODE_VERSION: '14.x'
   NEXTJSBUILD: './packages/basic-nextjs-example/dist/*'
-  NEXTJSBUILDDEST: 'https://nextjsapp951f.file.core.windows.net/nextjsonazurefun98c7/site/basic-nextjs-example'
-  AZUREFUNCDEST: 'https://nextjsapp951f.file.core.windows.net/nextjsonazurefun98c7/site/wwwroot'
+  NEXTJSBUILDDEST: 'https://nextjsapp973c.file.core.windows.net/nextjsazurefunapp8bdf/site/basic-nextjs-example'
+  AZUREFUNCDEST: 'https://nextjsapp973c.file.core.windows.net/nextjsazurefunapp8bdf/site/wwwroot'
 
 jobs:
   build-and-deploy:
